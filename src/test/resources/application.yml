@@ -1,0 +1,30 @@
+# Configuracion de la base de datos  driverClassName
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/dbcart
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+           
+  # Enabled Spring loaded
+  thymeleaf:
+    cache: false
+   
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: juanc0344@gmail.com  
+    password: juanc0344.*         
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+        auth: true
+        starttls.enable: true
+        ssl.trust: smtp.gmail.com

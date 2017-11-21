@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -88,5 +89,14 @@ public class Authenticate {
     
     //Se usa @ResponseStatus(HttpStatus.NO_CONTENT), si el controller es tipo void
     
-    
+    @GetMapping(value="/users/hello/{name}")
+    public ResponseEntity<?> hello(@PathVariable String name ){
+        List<Response> list = new ArrayList<>();
+        Response retval = new Response();
+        retval.setDesc("Hello:"+name);
+        retval.setCode(1);
+        list.add(retval);
+       
+               return new ResponseEntity<>(list,HttpStatus.OK);
+    }
 }

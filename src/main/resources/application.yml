@@ -1,14 +1,14 @@
 # Configuracion de la base de datos  driverClassName
 spring:
   datasource:
-#    driverClassName: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://localhost/dbcart
-#    username: root
-#    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/dbcart
+    username: root
+    password: root
 
-    url: jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/ad_68884210781770a
-    username: b64b809905183a
-    password: b70412b0
+#    url: jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/ad_68884210781770a
+#    username: b64b809905183a
+#    password: b70412b0
   jpa:
     show-sql: true
     database: MYSQL

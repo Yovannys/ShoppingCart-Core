@@ -5,10 +5,10 @@
  */
 package com.infosys.ShoppingCart.Dbb;
 
-import com.infosys.shoppingcart.entities.Cart;
-import com.infosys.shoppingcart.repositories.CartRepository;
+import com.infosys.shoppingcart.entities.Users;
+import com.infosys.shoppingcart.repositories.UserRepository;
+import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,29 +27,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class CartRepositoryTest {
+public class UserRepositoryTest {
     
     @Autowired
     private TestEntityManager entityManager;
     
     @Autowired
-    @Qualifier("cartRepository")
-    private CartRepository cartRepository;
+    @Qualifier("userRepository")
+    private UserRepository userRepository;
     
-    //@Ignore
+    //Probando a custom query repository with the  @query anotation
     @Test
-    public void whenFindById_thenReturnCart() {
-        // given
-        Cart newCart = entityManager.persist(new Cart());
-        entityManager.flush();
-
-        // when
-        Cart found = cartRepository.findById(newCart.getId());
-        //Cart found = cartRepository.findByName("Cart-1");
-
-        // then
-        assertThat(found.getId()).isEqualTo(newCart.getId());
-        //assertEquals("Foo", found.get().getName());
+    public void when_findByUsernameContaining(){
+        
+        List<Users> listUsr = userRepository.findByUsernameContaining("yova");
+        assertThat(listUsr.get(0).getUsername()).isEqualTo("yovanotti");
+    
     }
     
 }

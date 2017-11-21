@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.infosys.ShoppingCart.Unit.User;
+package com.infosys.ShoppingCart.Unit;
 
 import com.infosys.shoppingcart.controllers.Authenticate;
 import com.infosys.shoppingcart.services.UserService;
@@ -30,6 +30,7 @@ public class AuthenticateControllerTest{
     @Autowired
     private MockMvc mvc;
     
+    //Hay que mockear las dependencias del controller
     @MockBean
     @Qualifier("userServiceImpl")
     private UserService userService;
@@ -41,6 +42,7 @@ public class AuthenticateControllerTest{
          mvc.perform(get("/users/hello/"+"yovannys")
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
+          //.andExpect(content().string(equalTo("Greetings from Spring Boot!")));
             .andExpect(jsonPath("$", hasSize(1)))
             .andExpect(jsonPath("$[0].desc", is("Hello:yovannys")));        
       
